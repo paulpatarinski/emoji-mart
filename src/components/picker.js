@@ -408,29 +408,32 @@ export default class Picker extends React.PureComponent {
 
   render() {
     var {
-        perLine,
-        emojiSize,
-        set,
-        sheetSize,
-        style,
-        title,
-        emoji,
-        color,
-        native,
-        backgroundImageFn,
-        emojisToShowFilter,
-        showPreview,
-        emojiTooltip,
-        include,
-        exclude,
-        recent,
-        autoFocus,
-      } = this.props,
+      perLine,
+      emojiSize,
+      set,
+      sheetSize,
+      style,
+      title,
+      emoji,
+      color,
+      native,
+      backgroundImageFn,
+      emojisToShowFilter,
+      showPreview,
+      emojiTooltip,
+      include,
+      exclude,
+      recent,
+      autoFocus,
+      width
+    } = this.props,
       { skin } = this.state,
-      width = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
+      calculatedWidth = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
+
+    const finalWidth = width || calculatedWidth;
 
     return (
-      <div style={{ width: width, ...style }} className="emoji-mart">
+      <div style={{ width: finalWidth, ...style }} className="emoji-mart">
         <div className="emoji-mart-bar">
           <Anchors
             ref={this.setAnchorsRef}
@@ -523,6 +526,7 @@ Picker.propTypes = {
   onClick: PropTypes.func,
   perLine: PropTypes.number,
   emojiSize: PropTypes.number,
+  width: PropTypes.number,
   i18n: PropTypes.object,
   style: PropTypes.object,
   title: PropTypes.string,
@@ -552,7 +556,7 @@ Picker.propTypes = {
 }
 
 Picker.defaultProps = {
-  onClick: () => {},
+  onClick: () => { },
   emojiSize: 24,
   perLine: 9,
   i18n: {},
