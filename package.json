@@ -1,6 +1,6 @@
 {
   "name": "emoji-mart-custom",
-  "version": "2.4.21",
+  "version": "2.4.22",
   "description": "Customizable Slack-like emoji picker for React",
   "main": "dist/index.js",
   "module": "dist-es/index.js",
@@ -8,17 +8,14 @@
     "type": "git",
     "url": "git@github.com:paulpatarinski/emoji-mart.git"
   },
-  "keywords": [
-    "react",
-    "emoji",
-    "picker"
-  ],
+  "keywords": ["react", "emoji", "picker"],
   "author": "Etienne Lemay",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/missive/emoji-mart/issues"
   },
-  "homepage": "https://github.com/paulpatarinski/emoji-mart/tree/feature/mobile-improvements",
+  "homepage":
+    "https://github.com/paulpatarinski/emoji-mart/tree/feature/mobile-improvements",
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0"
   },
@@ -64,21 +61,28 @@
     "clean": "rimraf -rf dist dist-es src/data/data.js",
     "build:data": "node scripts/build-data",
     "build:dist": "npm run build:cjs && npm run build:es",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir dist --copy-files",
+    "build:cjs":
+      "cross-env BABEL_ENV=cjs babel src --out-dir dist --copy-files",
     "build:es": "babel src --out-dir dist-es --copy-files",
-    "build:docs": "cp css/emoji-mart.css docs && webpack --config ./docs/webpack.config.js",
+    "build:docs":
+      "cp css/emoji-mart.css docs && webpack --config ./docs/webpack.config.js",
     "build": "npm run clean && npm run build:data && npm run build:dist",
     "watch": "BABEL_ENV=cjs babel src --watch --out-dir dist --copy-files",
     "start": "npm run watch",
-    "stats": "webpack --config ./spec/webpack.config.js --json > spec/stats.json",
-    "react:clean": "rimraf node_modules/{react,react-dom,react-addons-test-utils}",
-    "react:14": "npm run react:clean && npm i react@^0.14 react-dom@^0.14 react-addons-test-utils@^0.14 --save-dev",
-    "react:15": "npm run react:clean && npm i react@^15 react-dom@^15 react-addons-test-utils@^15 --save-dev",
+    "stats":
+      "webpack --config ./spec/webpack.config.js --json > spec/stats.json",
+    "react:clean":
+      "rimraf node_modules/{react,react-dom,react-addons-test-utils}",
+    "react:14":
+      "npm run react:clean && npm i react@^0.14 react-dom@^0.14 react-addons-test-utils@^0.14 --save-dev",
+    "react:15":
+      "npm run react:clean && npm i react@^15 react-dom@^15 react-addons-test-utils@^15 --save-dev",
     "test": "NODE_ENV=test karma start && size-limit",
     "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prettier": "prettier --no-semi --single-quote --trailing-comma es5 --write \"{src,spec}/**/*.js\""
+    "prettier":
+      "prettier --no-semi --single-quote --trailing-comma es5 --write \"{src,spec}/**/*.js\""
   },
   "size-limit": [
     {
