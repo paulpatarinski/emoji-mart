@@ -110,6 +110,11 @@ export default class Category extends React.Component {
             return id
           })
           .filter(id => !!getData(id))
+
+        if (this.props.emojisToShowFilter)
+          emojis = emojis.filter(id =>
+            this.props.emojisToShowFilter(getData(id)),
+          )
       }
 
       if (emojis.length === 0 && frequentlyUsed.length > 0) {
@@ -215,6 +220,7 @@ Category.propTypes = {
   perLine: PropTypes.number.isRequired,
   emojiProps: PropTypes.object.isRequired,
   recent: PropTypes.arrayOf(PropTypes.string),
+  emojisToShowFilter: PropTypes.func,
 }
 
 Category.defaultProps = {

@@ -184,7 +184,7 @@ export default class Picker extends React.PureComponent {
     const prefixes = ['', '-webkit-', '-ms-', '-moz-', '-o-']
 
     prefixes.forEach(
-      prefix => (stickyTestElement.style.position = `${prefix}sticky`)
+      prefix => (stickyTestElement.style.position = `${prefix}sticky`),
     )
 
     this.hasStickyPosition = !!stickyTestElement.style.position.length
@@ -198,7 +198,7 @@ export default class Picker extends React.PureComponent {
 
     // Use Array.prototype.find() when it is more widely supported.
     const emojiData = CUSTOM_CATEGORY.emojis.filter(
-      customEmoji => customEmoji.id === emoji.id
+      customEmoji => customEmoji.id === emoji.id,
     )[0]
     for (let key in emojiData) {
       if (emojiData.hasOwnProperty(key)) {
@@ -291,7 +291,7 @@ export default class Picker extends React.PureComponent {
 
       if (scrollTop < minTop) {
         activeCategory = this.categories.filter(
-          category => !(category.anchor === false)
+          category => !(category.anchor === false),
         )[0]
       } else if (scrollTop + this.clientHeight >= this.scrollHeight) {
         activeCategory = this.categories[this.categories.length - 1]
@@ -408,29 +408,29 @@ export default class Picker extends React.PureComponent {
 
   render() {
     var {
-      perLine,
-      emojiSize,
-      set,
-      sheetSize,
-      style,
-      title,
-      emoji,
-      color,
-      native,
-      backgroundImageFn,
-      emojisToShowFilter,
-      showPreview,
-      emojiTooltip,
-      include,
-      exclude,
-      recent,
-      autoFocus,
-      width
-    } = this.props,
+        perLine,
+        emojiSize,
+        set,
+        sheetSize,
+        style,
+        title,
+        emoji,
+        color,
+        native,
+        backgroundImageFn,
+        emojisToShowFilter,
+        showPreview,
+        emojiTooltip,
+        include,
+        exclude,
+        recent,
+        autoFocus,
+        width,
+      } = this.props,
       { skin } = this.state,
       calculatedWidth = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
 
-    const finalWidth = width || calculatedWidth;
+    const finalWidth = width || calculatedWidth
 
     return (
       <div style={{ width: finalWidth, ...style }} className="emoji-mart">
@@ -472,6 +472,7 @@ export default class Picker extends React.PureComponent {
                 native={native}
                 hasStickyPosition={this.hasStickyPosition}
                 i18n={this.i18n}
+                emojisToShowFilter={emojisToShowFilter}
                 recent={category.id == RECENT_CATEGORY.id ? recent : undefined}
                 custom={
                   category.id == RECENT_CATEGORY.id
@@ -551,12 +552,12 @@ Picker.propTypes = {
       emoticons: PropTypes.arrayOf(PropTypes.string),
       keywords: PropTypes.arrayOf(PropTypes.string),
       imageUrl: PropTypes.string.isRequired,
-    })
+    }),
   ),
 }
 
 Picker.defaultProps = {
-  onClick: () => { },
+  onClick: () => {},
   emojiSize: 24,
   perLine: 9,
   i18n: {},
